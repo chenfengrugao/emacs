@@ -2,7 +2,7 @@
 
 ## Description
 
-define `autoinsert' template for verilog/systemverilog (*.v *.sv *.svh)
+define `autoinsert` template for verilog/systemverilog (*.v *.sv *.svh)
 
 ## Usage:
 
