@@ -14,6 +14,12 @@
 
 (require 'subr-x)
 
+(setq-default abbrev-mode nil)
+;;(read-abbrev-file "~/.abbrev_defs")
+(setq save-abbrevs nil)
+ 
+(setq frame-title-format "%b@%f")
+
 ;;
 ;; define funtion: prepend-path, append-path for load-path
 ;;
@@ -25,6 +31,7 @@
 (setq load-path (append load-path (list (expand-file-name my-path)))))
 
 (prepend-path "~/elisp")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; customize verilog mode
@@ -52,27 +59,6 @@
       verilog-linter                   "my_lint_shell_command"
       verilog-auto-inst-param-value    t
       )
-
-(setq-default abbrev-mode nil)
-;;(read-abbrev-file "~/.abbrev_defs")
-(setq save-abbrevs nil)
- 
-(setq frame-title-format "%b@%f")
-
-(global-set-key [f2] 'revert-buffer)     ;; reload buffer
-(global-set-key [f3] 'set-mark-command)    ;; C-@
-(global-set-key [f4] 'goto-line)           ;; M-g g
- 
-(global-set-key [f5] 'undo)                ;; C-_
-(global-set-key [f6] 'beginning-of-buffer) ;; M-<
-(global-set-key [f7] 'end-of-buffer)       ;; M->
-;;(global-set-key [f8] ') ;; reserved for vnc
-
-(global-set-key [f9] 'cua-mode)            ;; M-x cua-mode
-(global-set-key [f10] 'cua-set-rectangle-mark)            ;; replace C-return in cua-mode mode
-(global-set-key [f11] 'hexl-mode)          ;; M-x hexl-mode
-;;(global-set-key [f12] 'hexl-mode-exit)   ;; M-x hexl-mode-exit
-;;(global-set-key [f12] 'tmm-menubar)
 
  
 (custom-set-variables
@@ -135,7 +121,7 @@
 ;;
 
 (autoload 'fastopen "fastopen" "fastopen" t)
-(global-set-key (kbd "s-f") 'fastopen)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; window resize
@@ -163,12 +149,6 @@
   (resizeframe "right")
 )
 
-;;
-;; binding: win + ...
-;;
-;; (global-set-key (kbd "s-f") 'fastopen)
-(global-set-key (kbd "<s-left>") 'resizeframeleft)
-(global-set-key (kbd "<s-right>") 'resizeframeright)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -188,7 +168,6 @@
 (add-to-list 'load-path "~/elisp/color-rg")
 (add-to-list 'load-path "~/elisp/projectile")
 (require 'color-rg)
-(global-set-key [f12] 'color-rg-search-project)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -223,3 +202,26 @@
   (goto-char (point-max))
   (message "done."))
 (add-hook 'find-file-hook 'auto-insert)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; keyboard binding, adjust them as you like
+;;
+
+;; (global-set-key [f2] 'revert-buffer)                 ;; reload buffer
+;; (global-set-key [f3] 'set-mark-command)              ;; C-@
+;; (global-set-key [f4] 'goto-line)                     ;; M-g g
+;;  						      
+;; (global-set-key [f5] 'undo)                          ;; C-_
+;; (global-set-key [f6] 'beginning-of-buffer)           ;; M-<
+;; (global-set-key [f7] 'end-of-buffer)                 ;; M->
+;; ;;(global-set-key [f8] 'xxx)                         ;; reserved for vnc
+;;  						      
+;; (global-set-key [f9] 'cua-mode)                      ;; M-x cua-mode
+;; (global-set-key [f10] 'cua-set-rectangle-mark)       ;; replace C-return in cua-mode mode, it is useful in console mode
+;; (global-set-key [f11] 'hexl-mode)                    ;; M-x hexl-mode
+;; (global-set-key [f12] 'color-rg-search-project)      ;; global search in directories or project
+;;  						      
+;; (global-set-key (kbd "s-f") 'fastopen)               ;; open file by keywords under cursors
+;; (global-set-key (kbd "<s-left>") 'resizeframeleft)   ;; resize frame (known as window)
+;; (global-set-key (kbd "<s-right>") 'resizeframeright) ;; resize frame (known as window)
