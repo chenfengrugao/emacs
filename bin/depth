@@ -1,0 +1,19 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $depth = 10;
+my $prjroot = ".";
+
+while($depth > 0)
+{
+    if(-e "root.txt"){
+	last;
+    }else{
+	$prjroot .= "/..";
+	chdir("..");
+	$depth--;
+    }
+}
+
+print "$prjroot";

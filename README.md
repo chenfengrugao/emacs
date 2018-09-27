@@ -2,11 +2,11 @@
 
 ## Description
 
-define `autoinsert` template for verilog/systemverilog (*.v *.sv *.svh)
+emacs configration file mainly for verilog(sv, uvm), c, matlab, etc.
 
 ## Usage:
 
+- add bin to your $PATH
+- copy all files to your HOME: `~/` , please backup your own first
 - merge .emacs to yours
-- mkdir ~/elisp/insert
-- copy template.v to ~/elisp/insert
-- customize your own template.v
+
