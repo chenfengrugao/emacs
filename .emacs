@@ -17,8 +17,20 @@
 (setq-default abbrev-mode nil)
 ;;(read-abbrev-file "~/.abbrev_defs")
 (setq save-abbrevs nil)
- 
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t))
+
+
 (setq frame-title-format "%b@%f")
+
+
+;;(setq x-select-enable-clipboard t)
+
 
 ;;
 ;; define funtion: prepend-path, append-path for load-path
@@ -60,13 +72,12 @@
       verilog-auto-inst-param-value    t
       )
 
- 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; spice-mode
+;;
+
+(add-to-list 'load-path "~/elisp/spice-mode")
+(require 'spice-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
@@ -92,7 +103,7 @@
 ;;
 
 (prepend-path "~/elisp/cc-mode-5.33")
-(require 'cc-qt-mode)
+;;(require 'cc-qt-mode)
 
 ;; add hide/show hook
 (add-hook 'c-mode-hook 'hs-minor-mode)
@@ -115,6 +126,16 @@
 (setq tlc-indent-function t)
 
 (put 'downcase-region 'disabled nil)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; web-mode
+;;
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fastopen
@@ -208,20 +229,21 @@
 ;; keyboard binding, adjust them as you like
 ;;
 
-;; (global-set-key [f2] 'revert-buffer)                 ;; reload buffer
-;; (global-set-key [f3] 'set-mark-command)              ;; C-@
-;; (global-set-key [f4] 'goto-line)                     ;; M-g g
-;;  						      
-;; (global-set-key [f5] 'undo)                          ;; C-_
-;; (global-set-key [f6] 'beginning-of-buffer)           ;; M-<
-;; (global-set-key [f7] 'end-of-buffer)                 ;; M->
-;; ;;(global-set-key [f8] 'xxx)                         ;; reserved for vnc
-;;  						      
-;; (global-set-key [f9] 'cua-mode)                      ;; M-x cua-mode
-;; (global-set-key [f10] 'cua-set-rectangle-mark)       ;; replace C-return in cua-mode mode, it is useful in console mode
-;; (global-set-key [f11] 'hexl-mode)                    ;; M-x hexl-mode
-;; (global-set-key [f12] 'color-rg-search-project)      ;; global search in directories or project
-;;  						      
-;; (global-set-key (kbd "s-f") 'fastopen)               ;; open file by keywords under cursors
-;; (global-set-key (kbd "<s-left>") 'resizeframeleft)   ;; resize frame (known as window)
-;; (global-set-key (kbd "<s-right>") 'resizeframeright) ;; resize frame (known as window)
+(global-set-key [f2] 'revert-buffer)		     ;; reload buffer
+(global-set-key [f3] 'set-mark-command)		     ;; C-@
+(global-set-key [f4] 'goto-line)		     ;; M-g g
+
+(global-set-key [f5] 'undo)			     ;; C-_
+(global-set-key [f6] 'beginning-of-buffer)	     ;; M-<
+(global-set-key [f7] 'end-of-buffer)		     ;; M->
+;;(global-set-key [f8] 'xxx)			     ;; reserved for vnc
+
+(global-set-key [f9] 'cua-mode)			     ;; M-x cua-mode
+(global-set-key [f10] 'cua-set-rectangle-mark)	     ;; replace C-return in cua-mode mode, it is useful in console mode
+(global-set-key [f11] 'hexl-mode)		     ;; M-x hexl-mode
+(global-set-key [f12] 'color-rg-search-project)	     ;; global search in directories or project
+						      
+(global-set-key (kbd "s-f") 'fastopen)		     ;; open file by keywords under cursors
+(global-set-key (kbd "s-,") 'resizeframeleft)      ;; resize frame (known as window)
+(global-set-key (kbd "s-.") 'resizeframeright)     ;; resize frame (known as window)
+
