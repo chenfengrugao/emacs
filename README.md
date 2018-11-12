@@ -19,3 +19,8 @@ Note:
 - copy all files to your HOME: `~/` , please backup your own first
 - merge .emacs to yours
 
+## Update History
+
+- 11/12/2018 Update matlab-mode from https://git.code.sf.net/p/matlab-emacs/src matlab-emacs-src
+
+
