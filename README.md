@@ -21,6 +21,8 @@ Note:
 
 ## Update History
 
+- 11/12/2018 Update verilog-mode from https://www.veripool.org/ftp/verilog-mode-2018-10-20-87b2f58-vpo.el.gz
 - 11/12/2018 Update matlab-mode from https://git.code.sf.net/p/matlab-emacs/src matlab-emacs-src
+
 
 
