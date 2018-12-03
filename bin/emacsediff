@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Description
+#-----------------------------------
+# A wrapper for emacs ediff-files
+#
+
+# Usage
+#-----------------------------------
+# emacsediff file1 file2
+#
+
+emacs --eval "(ediff-files \"$1\" \"$2\")"
+

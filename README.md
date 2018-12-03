@@ -2,18 +2,17 @@
 
 ## Description
 
-emacs configration file mainly for verilog(sv, uvm), c, matlab, etc.
+emacs configration file mainly for verilog(sv, uvm), c, matlab, chisel, web, etc.
 
 Note:
-- set font in .Xresources, it is faster than set in .emacs
-- bin/depth
+- set font in .Xresources, it is faster than set in .emacs  
+- bin/depth  
   A Perl script to find project root directory by `root.txt`, so you should new a root.txt
-- bin/ripgrep
+- bin/ripgrep  
   use command `brew install ripgrep` to install if you are using MacOS
   [https://github.com/BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
-
-## Update
-
+- bin/emacsdiff  
+  emacsdiff is a wrapper for ediff-files
 
 
 ## Usage:
@@ -21,6 +20,7 @@ Note:
 - add bin to your $PATH
 - copy all files to your HOME: `~/` , please backup your own first
 - merge .emacs to yours
+
 
 ## Update History
 
