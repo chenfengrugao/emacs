@@ -23,7 +23,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(ediff-split-window-function 'split-window-horizontally))
 
 
 (setq frame-title-format "%b@%f")
@@ -76,8 +77,8 @@
 ;; spice-mode
 ;;
 
-(add-to-list 'load-path "~/elisp/spice-mode")
-(require 'spice-mode)
+;;(add-to-list 'load-path "~/elisp/spice-mode")
+;;(require 'spice-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
@@ -224,6 +225,12 @@
   (message "done."))
 (add-hook 'find-file-hook 'auto-insert)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; scala
+;;
+(add-to-list 'load-path "~/elisp/scala-mode")
+(require 'scala-mode)
+(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keyboard binding, adjust them as you like

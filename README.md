@@ -11,7 +11,13 @@ Note:
 - bin/ripgrep
   use command `brew install ripgrep` to install if you are using MacOS
   [https://github.com/BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
-  
+
+## Update
+
+- 2018-12-03
+  - add Scala mode for chisel
+  - enable split-window-horizontally of ediff-files as default
+
 
 ## Usage:
 
