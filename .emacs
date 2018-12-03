@@ -115,19 +115,9 @@
 ;;
 
 (prepend-path "~/elisp/matlab-emacs")
-(require 'matlab-load)
-(autoload 'matlab-mode "matlab" "Enter MATLAB mode." t)
-(setq auto-mode-alist (cons '("//.m//'" . matlab-mode) auto-mode-alist))
-(autoload 'matlab-shell "matlab" "Interactive MATLAB mode." t)
-(setq matlab-verify-on-save-flag nil) ; turn off auto-verify on save
-(global-font-lock-mode t)
-;;(matlab-mode-hilit)
-(autoload 'tlc-mode "tlc" "tlc Editing Mode" t)
-(add-to-list 'auto-mode-alist '("//.tlc$" . tlc-mode))
-(setq tlc-indent-function t)
-
-(put 'downcase-region 'disabled nil)
-
+(load-library "matlab-load")
+;; Enable CEDET feature support for MATLAB code
+;; (matlab-cedet-setup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; web-mode
