@@ -2,7 +2,7 @@
 ;; .emacs configuration file
 ;;
 ;; Author: Chenfeng
-;; Update: 2018-9-27
+;; Update: 2018-12-12
 ;; License: GNU General Public License v3.0 (refer to `LICENSE')
 ;;
 

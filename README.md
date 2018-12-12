@@ -6,7 +6,7 @@ emacs configration file mainly for verilog(sv, uvm), c, matlab, chisel, web, etc
 
 Note:
 - set font in .Xresources, it is faster than set in .emacs
-- bin/depth__
+- bin/depth  
   A Perl script to find project root directory by `root.txt`, so you should new a root.txt
 - bin/ripgrep  
   use command `brew install ripgrep` to install if you are using MacOS
