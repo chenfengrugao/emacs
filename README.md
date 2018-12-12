@@ -5,14 +5,15 @@
 emacs configration file mainly for verilog(sv, uvm), c, matlab, chisel, web, etc.
 
 Note:
-- set font in .Xresources, it is faster than set in .emacs  
-- bin/depth  
+- set font in .Xresources, it is faster than set in .emacs
+- bin/depth__
   A Perl script to find project root directory by `root.txt`, so you should new a root.txt
 - bin/ripgrep  
   use command `brew install ripgrep` to install if you are using MacOS
   [https://github.com/BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
 - bin/emacsdiff  
   emacsdiff is a wrapper for ediff-files
+- only test in latest Emacs 26.1
 
 
 ## Usage:
@@ -24,6 +25,9 @@ Note:
 
 ## Update History
 
+- 12/12/2018
+  - add resize/select window using the keyboard
+  - add markdown-mode
 - 12/03/2018
   - add Scala mode for chisel
   - enable split-window-horizontally of ediff-files as default

@@ -223,24 +223,45 @@
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; markdown
+;;
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keyboard binding, adjust them as you like
 ;;
 
-(global-set-key [f2] 'revert-buffer)		     ;; reload buffer
-(global-set-key [f3] 'set-mark-command)		     ;; C-@
-(global-set-key [f4] 'goto-line)		     ;; M-g g
+(global-set-key [f2] 'revert-buffer)		   ;; reload buffer
+(global-set-key [f3] 'set-mark-command)		   ;; C-@
+(global-set-key [f4] 'goto-line)		   ;; M-g g
 
-(global-set-key [f5] 'undo)			     ;; C-_
-(global-set-key [f6] 'beginning-of-buffer)	     ;; M-<
-(global-set-key [f7] 'end-of-buffer)		     ;; M->
-;;(global-set-key [f8] 'xxx)			     ;; reserved for vnc
+(global-set-key [f5] 'undo)			   ;; C-_
+(global-set-key [f6] 'beginning-of-buffer)	   ;; M-<
+(global-set-key [f7] 'end-of-buffer)		   ;; M->
+;;(global-set-key [f8] 'xxx)			   ;; reserved for vnc
 
-(global-set-key [f9] 'cua-mode)			     ;; M-x cua-mode
-(global-set-key [f10] 'cua-set-rectangle-mark)	     ;; replace C-return in cua-mode mode, it is useful in console mode
-(global-set-key [f11] 'hexl-mode)		     ;; M-x hexl-mode
-(global-set-key [f12] 'color-rg-search-project)	     ;; global search in directories or project
-						      
-(global-set-key (kbd "s-f") 'fastopen)		     ;; open file by keywords under cursors
+(global-set-key [f9] 'cua-mode)			   ;; M-x cua-mode
+(global-set-key [f10] 'cua-set-rectangle-mark)	   ;; replace C-return in cua-mode mode, it is useful in console mode
+(global-set-key [f11] 'hexl-mode)		   ;; M-x hexl-mode
+(global-set-key [f12] 'color-rg-search-project)	   ;; global search in directories or project
+
+(windmove-default-keybindings)			   ;; S-<Arrow> goto window, to replace C-x o
+
+(global-set-key (kbd "s-f") 'fastopen)		   ;; open file by keywords under cursors
 (global-set-key (kbd "s-,") 'resizeframeleft)      ;; resize frame (known as window)
 (global-set-key (kbd "s-.") 'resizeframeright)     ;; resize frame (known as window)
+
+(global-set-key (kbd "s-<left>") 'shrink-window-horizontally)   ;; win-<Arrow> to resize window
+(global-set-key (kbd "s-<right>") 'enlarge-window-horizontally)	;;
+(global-set-key (kbd "s-<down>") 'shrink-window)		;;
+(global-set-key (kbd "s-<up>") 'enlarge-window)			;;
+
 
