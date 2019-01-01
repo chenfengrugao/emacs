@@ -216,6 +216,27 @@
 (add-hook 'find-file-hook 'auto-insert)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; grep and highlight the selected text
+;;
+(defun grep-current-buffer ()
+  "grep string in current buffer"
+  (interactive)
+  (progn
+    ;;grep
+    (setq filename (buffer-file-name))
+    (setq selected-text (buffer-substring-no-properties (region-beginning) (region-end)))
+    (setq grep-result (shell-command-to-string (concat "grep -w -B 1 -A 1 -n " selected-text " " filename)))
+    ;;print to *grep*
+    (switch-to-buffer-other-window (get-buffer-create "*grep*"))
+    (insert (concat filename "\n\n"))
+    (insert grep-result)
+    ;;highlight
+    (setq face 'hi-yellow)
+    (hi-lock-face-buffer selected-text face)
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; scala
 ;;
 (add-to-list 'load-path "~/elisp/scala-mode")
@@ -255,6 +276,7 @@
 
 (windmove-default-keybindings)			   ;; S-<Arrow> goto window, to replace C-x o
 
+(global-set-key (kbd "s-g") 'grep-current-buffer)  ;; grep in current file only
 (global-set-key (kbd "s-f") 'fastopen)		   ;; open file by keywords under cursors
 (global-set-key (kbd "s-,") 'resizeframeleft)      ;; resize frame (known as window)
 (global-set-key (kbd "s-.") 'resizeframeright)     ;; resize frame (known as window)
