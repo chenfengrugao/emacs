@@ -93,8 +93,8 @@
 ;;
 
 (setq hs-special-modes-alist
-      (cons '(verilog-mode "\\<begin\\>\\|\\<task\\>\\|\\<function\\>\\|\\<class\\>\\|\\<module\\>\\|\\<package\\>\\|(" 
-			   "\\<end\\>\\|\\<endtask\\>\\|\\<endfunction\\>\\|\\<endclass\\>\\|\\<endmodule\\>\\|\\<endpackage\\>\\|)"
+      (cons '(verilog-mode "\\<begin\\>\\|\\<case\\>\\|\\<task\\>\\|\\<function\\>\\|\\<class\\>\\|\\<module\\>\\|\\<package\\>\\|(" 
+			   "\\<end\\>\\|\\<endcase\\>\\|\\<endtask\\>\\|\\<endfunction\\>\\|\\<endclass\\>\\|\\<endmodule\\>\\|\\<endpackage\\>\\|)"
 			   nil
 			   verilog-forward-sexp-function)
 	    hs-special-modes-alist))
@@ -109,6 +109,7 @@
 ;; add hide/show hook
 (add-hook 'c-mode-hook 'hs-minor-mode)
 (add-hook 'c++-mode-hook 'hs-minor-mode)
+(add-hook 'verilog-mode 'hs-minor-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; matlab
