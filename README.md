@@ -25,6 +25,9 @@ Note:
 
 ## Update History
 
+- 03/25/2018
+  - add buffer-move from https://github.com/lukhas/buffer-move
+  - update markdown-mode to v2.4 from https://github.com/jrblevin/markdown-mode
 - 12/12/2018
   - add resize/select window using the keyboard
   - add markdown-mode
