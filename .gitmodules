@@ -10,3 +10,6 @@
 [submodule "elisp/web-mode"]
 	path = elisp/web-mode
 	url = https://github.com/fxbois/web-mode
+[submodule "elisp/emacs-scala-mode"]
+	path = elisp/emacs-scala-mode
+	url = https://github.com/ensime/emacs-scala-mode
