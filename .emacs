@@ -44,6 +44,7 @@
 (setq load-path (append load-path (list (expand-file-name my-path)))))
 
 (prepend-path "~/elisp")
+(append-path "~/elisp/verilog-mode")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,6 +125,7 @@
 ;; web-mode
 ;;
 
+(add-to-list 'load-path "~/elisp/web-mode")
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))

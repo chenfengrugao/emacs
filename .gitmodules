@@ -1,0 +1,12 @@
+[submodule "elisp/buffer-move"]
+	path = elisp/buffer-move
+	url = https://github.com/lukhas/buffer-move
+[submodule "elisp/markdown-mode"]
+	path = elisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode
+[submodule "elisp/verilog-mode"]
+	path = elisp/verilog-mode
+	url = https://github.com/veripool/verilog-mode
+[submodule "elisp/web-mode"]
+	path = elisp/web-mode
+	url = https://github.com/fxbois/web-mode
