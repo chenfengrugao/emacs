@@ -18,15 +18,24 @@ Note:
 
 ## Usage:
 
-- add bin to your $PATH
-- copy all files to your HOME: `~/` , please backup your own first
-- merge .emacs to yours
+### clone files
 
+``` bash
+mkdir xxx
+git clone https://github.com/chenfengrugao/emacs.git
+git submodule init
+git submodule update
+```
+
+### settings
+- add xxx/emacs/bin to your $PATH
+- make soft link `ln xxx/emacs/elisp ~/elisp`
+- merge xxx/emacs/.emacs to yours local emacs init file
 
 ## Update History
 
 - 03/25/2018
-  - use git submodule to manage third-party libs.
+  - use git submodule to manage third-party libs. So, we can update third-paty libs use `git submodule update`.
   - add buffer-move from https://github.com/lukhas/buffer-move
   - update markdown-mode to v2.4 from https://github.com/jrblevin/markdown-mode
 - 12/12/2018

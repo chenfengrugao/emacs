@@ -246,7 +246,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; scala
 ;;
-(add-to-list 'load-path "~/elisp/scala-mode")
+(add-to-list 'load-path "~/elisp/emacs-scala-mode")
 (require 'scala-mode)
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 
