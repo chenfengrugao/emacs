@@ -32,8 +32,10 @@
 ;; This will solve the slow problem if you are editing Chinese.
 ;;
 
-;; (custom-set-faces
-;;  '(default ((t (:family "宋体" :foundry "outline" :slant normal :weight normal :height 105 :width normal)))))
+(if (eq system-type 'windows-nt)
+    (custom-set-faces
+     '(default ((t (:family "宋体" :foundry "outline" :slant normal :weight normal :height 105 :width normal)))))
+)
 
 (setq frame-title-format "%b@%f")
 

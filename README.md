@@ -43,6 +43,8 @@ so, you should copy `xxx/emacs/elisp` to `C:/Users/xxx/AppDate/Roaming/elisp`.
 
 ## Update History
 
+- 04/24/2019
+  - set font to '宋体' On Windows, it solves the slow problem when you edit Chinese.
 - 03/25/2019
   - use git submodule to manage third-party libs. So, we can update third-paty libs use `git submodule update`.
   - add buffer-move from https://github.com/lukhas/buffer-move
