@@ -26,6 +26,14 @@
  '(inhibit-startup-screen t)
  '(ediff-split-window-function 'split-window-horizontally))
 
+;;
+;; uncomment the following two lines, if you are on Windows OS
+;;  because .Xresources does not work on windows
+;; This will solve the slow problem if you are editing Chinese.
+;;
+
+;; (custom-set-faces
+;;  '(default ((t (:family "宋体" :foundry "outline" :slant normal :weight normal :height 105 :width normal)))))
 
 (setq frame-title-format "%b@%f")
 
