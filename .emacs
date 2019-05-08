@@ -273,6 +273,14 @@
    "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
+;; preview in firefox
+
+(add-to-list 'load-path "~/elisp/flymd")
+(require 'flymd)
+(defun my-flymd-browser-function (url)
+  (let ((browse-url-browser-function 'browse-url-firefox))
+    (browse-url url)))
+(setq flymd-browser-open-function 'my-flymd-browser-function)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keyboard binding, adjust them as you like
