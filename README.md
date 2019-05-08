@@ -43,12 +43,14 @@ so, you should copy `xxx/emacs/elisp` to `C:/Users/xxx/AppDate/Roaming/elisp`.
 
 ## Update History
 
+- 05/08/2019
+  - add markdown preview submodule [https://github.com/mola-T/flymd](https://github.com/mola-T/flymd)
 - 04/24/2019
   - set font to '宋体' On Windows, it solves the slow problem when you edit Chinese.
 - 03/25/2019
   - use git submodule to manage third-party libs. So, we can update third-paty libs use `git submodule update`.
-  - add buffer-move from https://github.com/lukhas/buffer-move
-  - update markdown-mode to v2.4 from https://github.com/jrblevin/markdown-mode
+  - add buffer-move from [https://github.com/lukhas/buffer-move](https://github.com/lukhas/buffer-move)
+  - update markdown-mode to v2.4 from [https://github.com/jrblevin/markdown-mode](https://github.com/jrblevin/markdown-mode)
 - 12/12/2018
   - add resize/select window using the keyboard
   - add markdown-mode

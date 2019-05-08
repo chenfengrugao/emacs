@@ -13,3 +13,6 @@
 [submodule "elisp/emacs-scala-mode"]
 	path = elisp/emacs-scala-mode
 	url = https://github.com/ensime/emacs-scala-mode
+[submodule "elisp/flymd"]
+	path = elisp/flymd
+	url = https://github.com/mola-T/flymd
