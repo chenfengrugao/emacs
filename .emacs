@@ -27,14 +27,30 @@
  '(ediff-split-window-function 'split-window-horizontally))
 
 ;;
-;; uncomment the following two lines, if you are on Windows OS
-;;  because .Xresources does not work on windows
-;; This will solve the slow problem if you are editing Chinese.
+;; font and coding-system setting on windows
 ;;
 
 (if (eq system-type 'windows-nt)
     (custom-set-faces
-     '(default ((t (:family "宋体" :foundry "outline" :slant normal :weight normal :height 105 :width normal)))))
+     '(default ((t (:family "新宋体" :foundry "outline" :slant normal :weight normal :height 105 :width normal)))))
+)
+
+(if (eq system-type 'windows-nt)
+    (progn
+      (set-language-environment "utf-8")
+      (set-buffer-file-coding-system 'utf-8)
+      (set-terminal-coding-system 'utf-8)
+      (set-keyboard-coding-system 'utf-8)
+      (set-selection-coding-system 'utf-8)
+      (set-default-coding-systems 'utf-8)
+      (set-clipboard-coding-system 'utf-8)  
+      (modify-coding-system-alist 'process "*" 'utf-8)  
+      (setq-default pathname-coding-system 'utf-8)  
+      (prefer-coding-system 'utf-8)
+      (setq default-process-coding-system '(utf-8 . utf-8))  
+      (setq locale-coding-system 'utf-8)
+      (setq file-name-coding-system 'utf-8) 
+      (setq default-buffer-file-coding-system 'utf-8)  
 )
 
 (setq frame-title-format "%b@%f")
@@ -53,6 +69,12 @@
 (defun append-path ( my-path )
 (setq load-path (append load-path (list (expand-file-name my-path)))))
 
+;;
+;; ~ means /home/xxx in linux and C:/Users/xxx/AppData/Roaming in Windows7, for example.
+;; but ~ points to C:/Users/xxx when you use emacs with git-bash.
+;; If you don't sure which path exactly points to, you can use C-f ~ to double check.
+;;
+
 (prepend-path "~/elisp")
 (append-path "~/elisp/verilog-mode")
 
@@ -66,7 +88,7 @@
 
 (global-font-lock-mode t)
 
-(setq verilog-indent-level             2
+(setq verilog-indent-level            2
       verilog-indent-level-module      2
       verilog-indent-level-declaration 2
       verilog-indent-level-behavioral  2
@@ -126,10 +148,10 @@
 ;; matlab
 ;;
 
-(prepend-path "~/elisp/matlab-emacs")
-(load-library "matlab-load")
-;; Enable CEDET feature support for MATLAB code
-;; (matlab-cedet-setup)
+;;(prepend-path "~/elisp/matlab-emacs")
+;;(load-library "matlab-load")
+;;;; Enable CEDET feature support for MATLAB code
+;;;; (matlab-cedet-setup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; web-mode
@@ -182,10 +204,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable line number
-;;
+
+;;;; Emacs <= 25
 ;;(global-linum-mode 1)
 ;;(require 'nlinum)
-;;
+
 ;;the following way is only avaliable in Emacs >= 26
 (require 'display-line-numbers)
 (global-display-line-numbers-mode)
