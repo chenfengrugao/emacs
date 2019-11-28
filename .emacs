@@ -10,21 +10,26 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+
+;; check emacs version
+;;(message system-name) ;; host
+;;(if (version< emacs-version "24.1")
+;;    (message "emacs version: < 24.1")
+;;  (message "emacs version: >= 24.1"))
+
 (package-initialize)
-
+ 
 (require 'subr-x)
-
+ 
 (setq-default abbrev-mode nil)
 ;;(read-abbrev-file "~/.abbrev_defs")
 (setq save-abbrevs nil)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(ediff-split-window-function 'split-window-horizontally))
+ '(custom-enabled-themes (quote (misterioso)))
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(global-display-line-numbers-mode t)
+ '(inhibit-startup-screen t))
 
 ;;
 ;; font and coding-system setting on windows
@@ -33,6 +38,9 @@
 (if (eq system-type 'windows-nt)
     (custom-set-faces
      '(default ((t (:family "新宋体" :foundry "outline" :slant normal :weight normal :height 105 :width normal)))))
+  (set-default-font "-bitstream-Bitstream Vera Sans Mono-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
+  ;;(custom-set-faces
+  ;; '(default ((t (:family "Bitstream Vera Sans Mono" :foundry "bitstream" :slant normal :weight normal :height 136 :width normal)))))
 )
 
 (if (eq system-type 'windows-nt)
@@ -55,9 +63,8 @@
 
 (setq frame-title-format "%b@%f")
 
-
-;;(setq x-select-enable-clipboard t)
-
+;(setq select-enable-clipboard t)
+;(setq x-select-enable-clipboard t)
 
 ;;
 ;; define funtion: prepend-path, append-path for load-path
@@ -82,29 +89,59 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; customize verilog mode
 ;;
+(setq-default indent-tabs-mode nil)
 
 (autoload 'verilog-mode "verilog-mode" "Verilog mode" t)
 (add-to-list 'auto-mode-alist '("\\.[ds]?vh?\\'" . verilog-mode))
 
 (global-font-lock-mode t)
+ 
+(setq verilog-indent-level		    2
+   verilog-indent-level-module	    2
+   verilog-indent-level-declaration 2
+   verilog-indent-level-behavioral  2
+   verilog-indent-level-directive   2
+   verilog-case-indent		    2
+   verilog-auto-newline		    nil	 ;;;disable auto newline after semicolons
+   verilog-auto-indent-on-newline   t
+   verilog-tab-always-indent	    t
+   verilog-auto-endcomments	    t
+   verilog-minimum-comment-distance 40
+   verilog-indent-begin-after-if    t
+   verilog-auto-lineup		    'declarations
+   verilog-highlight-p1800-keywords t
+   verilog-linter		    "my_lint_shell_command"
+   verilog-auto-inst-param-value    t
+   )
 
-(setq verilog-indent-level            2
-      verilog-indent-level-module      2
-      verilog-indent-level-declaration 2
-      verilog-indent-level-behavioral  2
-      verilog-indent-level-directive   2
-      verilog-case-indent              2
-      verilog-auto-newline             nil  ;;;disable auto newline after semicolons
-      verilog-auto-indent-on-newline   t
-      verilog-tab-always-indent        t
-      verilog-auto-endcomments         t
-      verilog-minimum-comment-distance 40
-      verilog-indent-begin-after-if    t
-      verilog-auto-lineup              'declarations
-      verilog-highlight-p1800-keywords t
-      verilog-linter                   "my_lint_shell_command"
-      verilog-auto-inst-param-value    t
-      )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; mercurial
+;;
+;;(add-to-list 'load-path "~/elisp/mercurial")
+;;(require 'mercurial)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; evil-matchit
+;;
+;;(add-to-list 'load-path "~/elisp/evil-matchit")
+;;(require 'evil-matchit)
+;;(global-evil-matchit-mode 1)
+ 
+;;;; ctags
+;; (setq tags-revert-without-query t)
+;; (setq large-file-warning-threshold 30000000) ;; 30MB
+;; (setq tags-case-fold-search nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; emacs-jedi
+;;
+;(add-to-list 'load-path "/home/verify8/chenf/eda/Pylibs/emacs-jedi-master")
+;(autoload 'jedi:setup "jedi" nil t)
+;(setq jedi:setup-keys t)
+;(add-hook 'python-mode-hook 'jedi:setup)
+;(setq jedi:complete-on-dot t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; spice-mode
@@ -142,8 +179,8 @@
 ;; add hide/show hook
 (add-hook 'c-mode-hook 'hs-minor-mode)
 (add-hook 'c++-mode-hook 'hs-minor-mode)
-(add-hook 'verilog-mode 'hs-minor-mode)
-
+(add-hook 'verilog-mode-hook 'hs-minor-mode)
+ 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; matlab
 ;;
@@ -164,12 +201,27 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; fastopen
+;; markdown
 ;;
 
+(prepend-path "~/elisp/markdown-mode")
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+ 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fastopen
+;;
+ 
 (autoload 'fastopen "fastopen" "fastopen" t)
-
-
+ 
+ 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; window resize
 ;;   enlarge or shrink frame size by moving the right border
@@ -243,7 +295,13 @@
 	       ) auto-insert-alist))
 (require 'cl)
 (defvar template-replacements-alists
-  '(("%file%" . (lambda () (file-name-nondirectory (buffer-file-name))))))
+  '(("%file%"   . (lambda () (file-name-nondirectory (buffer-file-name))))
+    ("%module%" . (lambda () (file-name-sans-extension (file-name-nondirectory (buffer-file-name)))))
+    ("%author%" . (lambda () (user-login-name)))
+    ("%date%"   . (lambda () (format-time-string "%Y-%m-%d")))
+    )
+  )
+
 (defun my-template ()
   (time-stamp)
   (mapc #'(lambda(c)
@@ -308,31 +366,35 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keyboard binding, adjust them as you like
 ;;
-
-(global-set-key [f2] 'revert-buffer)		   ;; reload buffer
-(global-set-key [f3] 'set-mark-command)		   ;; C-@
-(global-set-key [f4] 'goto-line)		   ;; M-g g
-
-(global-set-key [f5] 'undo)			   ;; C-_
-(global-set-key [f6] 'beginning-of-buffer)	   ;; M-<
-(global-set-key [f7] 'end-of-buffer)		   ;; M->
-;;(global-set-key [f8] 'xxx)			   ;; reserved for vnc
-
-(global-set-key [f9] 'cua-mode)			   ;; M-x cua-mode
-(global-set-key [f10] 'cua-set-rectangle-mark)	   ;; replace C-return in cua-mode mode, it is useful in console mode
-(global-set-key [f11] 'hexl-mode)		   ;; M-x hexl-mode
-(global-set-key [f12] 'color-rg-search-project)	   ;; global search in directories or project
-
-(windmove-default-keybindings)			   ;; S-<Arrow> goto window, to replace C-x o
-
-(global-set-key (kbd "s-g") 'grep-current-buffer)  ;; grep in current file only
-(global-set-key (kbd "s-f") 'fastopen)		   ;; open file by keywords under cursors
-(global-set-key (kbd "s-,") 'resizeframeleft)      ;; resize frame (known as window)
-(global-set-key (kbd "s-.") 'resizeframeright)     ;; resize frame (known as window)
-
-(global-set-key (kbd "s-<left>") 'shrink-window-horizontally)   ;; win-<Arrow> to resize window
-(global-set-key (kbd "s-<right>") 'enlarge-window-horizontally)	;;
-(global-set-key (kbd "s-<down>") 'shrink-window)		;;
-(global-set-key (kbd "s-<up>") 'enlarge-window)			;;
+ 
+;; goto window, to replace C-x o
+(windmove-default-keybindings)			  ;; default is shift
+ 
+(global-set-key [f2] 'revert-buffer)		     ;; reload buffer
+(global-set-key [f3] 'set-mark-command)		     ;; C-@
+(global-set-key [f4] 'goto-line)		     ;; M-g g
+ 
+(global-set-key [f5] 'undo)			     ;; C-_
+(global-set-key [f6] 'beginning-of-buffer)	     ;; M-<
+(global-set-key [f7] 'end-of-buffer)		     ;; M->
+;;(global-set-key [f8] 'xxx)			     ;; reserved for vnc
+ 
+(global-set-key [f9] 'cua-mode)			     ;; M-x cua-mode
+(global-set-key [f10] 'cua-set-rectangle-mark)	     ;; replace C-return in cua-mode mode, it is useful in console mode
+(global-set-key [f11] 'hexl-mode)		     ;; M-x hexl-mode
+(global-set-key [f12] 'color-rg-search-project)	     ;; global search in directories or project
+ 
+(global-set-key (kbd "s-g") 'grep-current-buffer)	  ;; grep in current file only
+ 
+(global-set-key (kbd "s-f") 'fastopen)		     ;; open file by keywords under cursors
+(global-set-key (kbd "s-,") 'resizeframeleft)	  ;; resize frame (known as window)
+(global-set-key (kbd "s-.") 'resizeframeright)	  ;; resize frame (known as window)
+ 
+(global-set-key (kbd "s-\\") 'hs-toggle-hiding)	   ;; toggle hide/show
+ 
+(global-set-key (kbd "s-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "s-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "s-<down>") 'shrink-window)
+(global-set-key (kbd "s-<up>") 'enlarge-window)
 
 
